@@ -12,7 +12,7 @@
 
 Your Vercel URL might be different. Check your actual URL (e.g. `https://gc-check-xxx.vercel.app`).
 
-Edit these files and replace `https://gc-check.vercel.app` with your real URL:
+Edit these files and replace `https://gc-check-lime.vercel.app` with your real URL:
 
 - **robots.txt** – line with `Sitemap:`
 - **sitemap.xml** – the `<loc>` tag
@@ -38,7 +38,7 @@ cd "c:\Projects\Gift Card checker"
 1. Go to **https://www.bing.com/webmasters**
 2. Sign in with your Microsoft account
 3. Click **Add a site**
-4. Enter your site URL: `https://gc-check.vercel.app` (or your real URL)
+4. Enter your site URL: `https://gc-check-lime.vercel.app` (or your real URL)
 5. Choose verification method:
    - **Option A:** Add the XML file they give you to your site
    - **Option B:** Add the meta tag to your index.html `<head>` (Bing will show you the tag)
