@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rc-balance.vercel.app/sitemap.xml
