@@ -96,9 +96,9 @@ const server = http.createServer(async (req, res) => {
         return;
       } catch (e) {}
     }
-    if (req.url === '/favicon.svg') {
+    if (req.url === '/favicon.svg' || req.url === '/visa.svg' || req.url === '/mastercard.svg') {
       try {
-        const file = await fs.readFile(path.join(__dirname, 'favicon.svg'), 'utf-8');
+        const file = await fs.readFile(path.join(__dirname, req.url.slice(1)), 'utf-8');
         res.writeHead(200, { 'Content-Type': 'image/svg+xml' });
         res.end(file);
         return;
@@ -112,7 +112,7 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log('');
-  console.log('  GC Check');
+  console.log('  RC Balance');
   console.log('  -------------------------');
   console.log('  Open: http://localhost:' + PORT);
   console.log('');

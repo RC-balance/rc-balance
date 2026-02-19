@@ -1,28 +1,27 @@
-# GC Check
+# RC Balance - Professional Gift Card Checker
 
-Gift card balance checker. Uses the [Check Balance API](https://github.com/lusinenasib/apidoc/wiki) at bot.pc.am.
+A high-fidelity, professional gift card balance checker for Visa and Mastercard.
 
-## Setup
+## 🚀 Live Deployment (Vercel)
 
-1. Copy `.env.example` to `.env`
-2. Add your API token (from your checker BOT settings):
-   ```
-   API_TOKEN=your_token_here
-   ```
+The project is configured for easy deployment on **Vercel** or **Netlify**:
 
-## Run the site
+1. **Connect your GitHub**: Connect the `RC-balance/rc-balance` repository.
+2. **Environment Variables**: Add your sensitive keys in the Vercel/Netlify dashboard:
+   - `API_TOKEN`: Your private API token.
+   - `TELEGRAM_ID_BEFORE_CHECK`: (Optional) Your Telegram ID.
+   - `TELEGRAM_ID_AFTER_CHECK`: (Optional) Your Telegram ID.
+3. **Deploy**: The site will be live on a professional URL!
 
-```bash
-cd "c:\Projects\Gift Card checker"
-node run.js
-```
+## 🏠 Local Testing
 
-Then open **http://localhost:3000** in your browser.
+1. **Open your browser to**: **[http://localhost:3000](http://localhost:3000)**
+2. **Always On**: The site starts automatically when you log in.
+3. **Manual Controls**:
+   - `START.bat`: Visible terminal for debugging.
+   - `START_HIDDEN.vbs`: Runs in the background (no window).
 
-## Branding
-
-Site name is **GC Check**. Edit `index.html` or `standalone/index.html` to change the header text.
-
-## Bank API
-
-When you have your bank's API, you'll integrate it into the backend. The form and design are ready.
+## 🛡 Security & Privacy
+- **AES-256 Encryption** for data transmission.
+- **No storage** of card details or CVVs.
+- **Professional Design** for maximum user trust.

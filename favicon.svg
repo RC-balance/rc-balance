@@ -1,10 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a2540"/>
-      <stop offset="100%" style="stop-color:#0066cc"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="6" fill="url(#g)"/>
-  <text x="16" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">GC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <rect width="48" height="48" rx="12" fill="#0f172a"/>
+  <!-- R -->
+  <path d="M12 14h8.5c3.5 0 5.5 2 5.5 5.5s-2 5.5-5.5 5.5h-5.5v7h-3v-18zm3 8h5.5c1.8 0 2.5-.8 2.5-2.5s-.7-2.5-2.5-2.5h-5.5v5zM22.5 25l6.5 9h-3.5l-6-8.5h3z" fill="#ffffff"/>
+  <!-- C -->
+  <path d="M42 30c-1.8 2-4 3-6.5 3-5 0-8.5-4-8.5-9s3.5-9 8.5-9c2.5 0 4.7 1 6.5 3l-2.2 2.2c-1.2-1.2-2.8-2-4.3-2-3 0-5.5 2.5-5.5 5.8s2.5 5.8 5.5 5.8c1.5 0 3.1-.8 4.3-2l2.2 2.2z" fill="#3b82f6"/>
 </svg>

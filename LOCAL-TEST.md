@@ -29,7 +29,7 @@ node run.js
 
 You should see:
 ```
-  GC Check
+  RC Balance
   -------------------------
   Open: http://localhost:3000
 ```

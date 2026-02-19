@@ -1,8 +1,7 @@
 {
   "version": 2,
   "rewrites": [
-    {"source": "/faq", "destination": "/"},
-    {"source": "/contact", "destination": "/"},
-    {"source": "/about", "destination": "/"}
+    { "source": "/api/(.*)", "destination": "/api/check-balance.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

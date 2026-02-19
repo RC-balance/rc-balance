@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://gc-check-lime.vercel.app/sitemap.xml
