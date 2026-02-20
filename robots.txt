@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://rcbalance.store/sitemap.xml
+Sitemap: https://rc-balance.vercel.app/sitemap.xml
