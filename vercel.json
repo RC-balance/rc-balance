@@ -1,5 +1,13 @@
 {
   "version": 2,
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "rc-balance.vercel.app" }],
+      "destination": "https://rcbalance.store/:path",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",
