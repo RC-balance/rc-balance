@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rcbalance.shop/</loc>
+    <loc>https://rcbalance.store/</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://rcbalance.shop/faq</loc>
+    <loc>https://rcbalance.store/faq</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rcbalance.shop/about</loc>
+    <loc>https://rcbalance.store/about</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
